@@ -178,7 +178,7 @@ sed -i '/APP_DEBUG=/c\APP_DEBUG=false' .env
 
 echo "Configuring"
 docker-compose up -d
-docker-compose exec -T fpm$SERVICE_NUMBER composer install --optimize-autoloader --no-dev
+docker-compose exec -T fpm$SERVICE_NUMBER composer install
 docker-compose exec -T fpm$SERVICE_NUMBER php artisan migrate:refresh --seed
 docker-compose exec -T fpm$SERVICE_NUMBER php artisan key:generate
 docker-compose exec -T fpm$SERVICE_NUMBER php artisan storage:link
